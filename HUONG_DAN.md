@@ -10,10 +10,6 @@ Vào **Cài đặt → Bộ đệm âm thanh → Dọn bộ đệm không sử d
 
 Bản này dùng ảnh hoàn chỉnh từ renderer GPU để hiển thị preview và không chờ tác vụ preview khi thay bài hát. Dữ liệu của bài cũ được giữ tới khi tác vụ đang đọc nó hoàn tất.
 
-Preview, các nút Mở nhạc/Phát/Đánh dấu và ba thanh thời gian nằm gọn trong
-phần bên trái 3/5 cửa sổ. Bảng chỉnh thành phần bên phải 2/5 kéo dài xuống dưới
-để có thêm chỗ sửa sóng. Cài đặt cỡ chữ vẫn cho phép tăng/giảm mật độ thông tin.
-
 ## Hiệu ứng và tỷ lệ ảnh — bản 1.2
 
 Trong Image, mở **Ảnh / Hiệu ứng suốt bài** và chọn Không, Đập theo nhạc,
@@ -68,10 +64,6 @@ Có mẫu intro ngắn để bắt đầu nhanh và preset minh họa `examples/
 - Khi kéo tới Composition nằm dưới, giữ con trỏ gần mép dưới cây để tự cuộn; rê giữ trên Composition thu gọn để mở nó rồi thả.
 - Trong Cài đặt, chọn **FPS mục tiêu xem trước 30/60/120**. Chất lượng **Tự động** sẽ điều chỉnh độ phân giải theo khả năng máy. FPS đạt được tùy cảnh và phần cứng.
 - Trong Export, **Bitrate video** chọn Tự động hoặc 0,1–200 Mbps. Đây là tốc độ bit trung bình; cảnh đơn giản có thể dùng ít hơn. Âm thanh AAC 192 kbps tính riêng. Giá trị cao thường tăng chất lượng và dung lượng, không làm cảnh render nhanh hơn.
-
-Xem `CHANGES_1.0.0.md` để biết chi tiết và kết quả đo hiệu năng.
-
-Trên Linux x86_64 (Debian 12 / Ubuntu 24.04 hoặc mới hơn, glibc 2.36+), cấp quyền chạy cho AppImage rồi mở. Xem `LINUX.md` về quyền chạy, FUSE và trình điều khiển đồ họa. Preset vẫn dùng `.TS`; thư viện mặc định ở `~/.local/share/AveeStudio/library-v1`.
 
 ## Tab dự án và render song song
 
@@ -207,18 +199,6 @@ Trong **+ Thêm → Hiệu ứng**, chọn **Chỉnh màu**. Đặt thành phầ
 Các nhóm gồm phơi sáng, độ sáng, tương phản, vùng sáng/vùng tối, trắng/đen, gamma; nhiệt độ/tint, bão hòa, vibrance, hue; HSL theo vùng màu; và **Curves**. Phơi sáng dùng đơn vị stop; tăng 1 stop là nhân đôi ánh sáng. Curves có kênh chung RGB và các kênh Đỏ/Lục/Lam. Thêm và kéo điểm để chỉnh vùng tối/trung gian/sáng, xóa điểm hoặc đưa đường cong về mặc định. Undo/Redo và preset .TS giữ cả đường cong.
 
 Các thông số mặc định giữ màu gốc. Chỉnh màu chạy trên GPU; CPU dùng khi GPU không khả dụng. Kết quả là xử lý video RGB của app, không phải quy trình chỉnh RAW/HDR có quản lý màu chuyên dụng.
-
-## Hiệu ứng gần Avee gốc
-
-- **Liquify:** chọn `Avee · Simplex Noise` để dùng shader trích từ smali, với Intensity, Control, Control Speed/Beat, Complexity, Noise Scale, Blobs và Zoom. `Desktop 0.2` giữ kiểu cũ.
-- **RGB Split:** có ba cách lóe: **Cố định**, **Theo beat nhạc**, **Theo chu kỳ**. X dương lóe phải, X âm lóe trái; Y dương xuống, Y âm lên; phối hợp X/Y tạo hướng chéo. **Lóe về cùng hướng** bật mặc định cho lớp mới; bỏ tích để tách đối xứng như trước. **Đường lóe mượt** chỉnh thời gian tăng lên đỉnh, giữ đỉnh và thu về; **Độ mạnh đỉnh** chỉnh mức tách. Chu kỳ có thời điểm bắt đầu và khoảng lặp; khoảng lặp quá ngắn sẽ được nâng bằng tổng ba pha để tránh cắt đột ngột. Theo beat kích hoạt khi Beat vượt ngưỡng; chỉnh Audio Provider và ngưỡng nếu ít/nhiều lần lóe. Màu ba kênh, Blend Mode Content và ảnh gốc phía trên/dưới vẫn có. Chế độ cố định không cần Audio Provider.
-- **Motion Blur:** chế độ **Chuyển động · Shutter** lấy mẫu chuyển động thật trong khoảng phơi sáng ngắn: **Shutter Angle** càng lớn vệt càng dài; **Shutter Phase** đặt khoảng phơi sáng trước/sau thời điểm khung; **Samples** điều khiển độ mịn. Mặc định 180°/−90°/12 mẫu; tại 30 FPS là khoảng 1/60 giây, tại 60 FPS là 1/120 giây. Đặt sau hiệu ứng Dịch chuyển hoặc chọn Composition đang chuyển động. Vật đứng yên giữ nguyên nét, không lưu bóng kiểu Echo. Đây là mô phỏng shutter theo nguyên lý chuyển động, không phải bản sao thuật toán Adobe hoặc ước lượng optical flow. **Vector thủ công · Avee** vẫn dùng Gaussian 9 mẫu và có thể làm mờ cả ảnh tĩnh.
-- **Mirror:** Mirror Mode, Flip Mirror, tâm trục, màu và nguồn Composition.
-- **Particle:** Count Limit, Particle Scale, Spawn Area/Time, Lifetime, Speed/Random, Gravity X/Y, Side Sine Wave, Color From/To, Start/End Size, Fade và Mirror X/Y. Hiện dựng hạt 2D; perspective/force field 3D và biểu thức đặc thù được giữ dữ liệu và báo khi nhập.
-- **Glow:** Threshold, Intensity, Radius và giữ ảnh gốc; bước threshold/blur/tint được đưa lên GPU, có CPU fallback khi driver không hỗ trợ. Điều khiển theo kiểu AE, không bảo đảm kết quả giống từng pixel.
-- **Shader:** biên dịch GLSL thực trên GPU; xem `SHADERS.md`. Cần OpenGL 3.3. Hiệu ứng tích hợp có CPU fallback; shader tự viết báo lỗi biên dịch/driver.
-
-Xem `EFFECT_COMPATIBILITY.md` để biết mức tương thích. Một số shader vertex, biểu thức chuyển động, video texture trong preset điện thoại và tài nguyên nội bộ chưa dựng đầy đủ trên laptop. `.viz` vẫn giữ các phương tiện này. Chèn video qua track Intro và GIF qua thành phần Ảnh là các tính năng riêng đã được hỗ trợ.
 
 ## Nhạc, đánh dấu và video intro
 
