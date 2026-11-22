@@ -1,5 +1,7 @@
 # Spectrum-studio
 Tis is spectrum studio - music visualizer wirten by Thuan Cao (Youtube channel: Avee Player Template VN)
+*File on RELEASE
+
 Các tính năng chính:
 - Tự sáng tạo với nhiều loại sóng nhạc cho riêng mình với 8 dạng sóng và 14 hiệu ứng/ 8 type bar and 14 effects:
 
