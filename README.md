@@ -28,3 +28,8 @@ Tis is spectrum studio - music visualizer wirten by Thuan Cao (Youtube channel: 
 # Hỗ trợ làm việc đa tab, render nhiều video cùng lúc và cơ chế bảo vệ quá tải khi render:
   
 <img width="1920" height="118" alt="image" src="https://github.com/user-attachments/assets/453f4802-d4ad-4853-8cd3-31eb40122216" />
+
+# New version 1.2.5
+Support MCP sever
+Text effect
+Revolusion preview 720,1080p
